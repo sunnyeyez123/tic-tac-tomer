@@ -20,7 +20,7 @@ public class TicTacTomer {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		GameBoard panel = new GameBoard();
-		//frame.add(panel);
+		frame.add(panel);
 		frame.pack();
 		frame.setVisible(true);
 	}
