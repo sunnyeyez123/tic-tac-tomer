@@ -15,15 +15,15 @@ public class GamePanel extends JPanel {
 
 	GameBoard board;
 	JButton reset;
-	
+
 	JRadioButton imgP1;
 	JRadioButton imgP2;
 
 	ImageIcon p1icon;
 	ImageIcon p2icon;
 	JComboBox tomerList;
-	String[] tomerStrings = { "tomercoding", "tomercrossarmed", "tomerfunnyface", "tomermain", "tomerscarf" };
-
+	String[] tomerStrings = { "tomercoding", "tomercrossarmed",
+			"tomerfunnyface", "tomermain", "tomerscarf" };
 
 	public GamePanel() {
 		setLayout(new BorderLayout());
@@ -39,8 +39,8 @@ public class GamePanel extends JPanel {
 		imgP2 = new JRadioButton("Change Player 2 Image");
 		imgP2.addActionListener(bListen);
 
-		//Create the combo box, select item at index 4.
-		//Indices start at 0, so 4 specifies the pig.
+		// Create the combo box, select item at index 4.
+		// Indices start at 0, so 4 specifies the pig.
 		tomerList = new JComboBox(tomerStrings);
 		tomerList.setSelectedIndex(3);
 		tomerList.addActionListener(bListen);
@@ -63,26 +63,23 @@ public class GamePanel extends JPanel {
 			}
 
 			if (ae.getSource() == tomerList) {
-				
-				  JComboBox cb = (JComboBox)ae.getSource();
-			        String tomerPicName = (String)cb.getSelectedItem();
-			        
-			        if(imgP1.isSelected()){
-				        p1icon = new ImageIcon(tomerPicName);
 
-			        }
-			        if(imgP2.isSelected()){
-				        p2icon = new ImageIcon(tomerPicName);
+				JComboBox cb = (JComboBox) ae.getSource();
+				String tomerPicName = (String) cb.getSelectedItem();
 
-			        }
-			        
-			       
-			        
-		        
-		
+				if (imgP1.isSelected()) {
+					p1icon = new ImageIcon(tomerPicName);
+					board.setPlayer1Icon(p1icon);
+
+				}
+				if (imgP2.isSelected()) {
+					p2icon = new ImageIcon(tomerPicName);
+					board.setPlayer2Icon(p2icon);
+
+				}
+
 			}
 
-			
 		}
 	}
 

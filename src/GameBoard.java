@@ -1,8 +1,8 @@
 import java.awt.*;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /*
@@ -18,12 +18,18 @@ public class GameBoard extends JPanel {
 
 	private int rows;
 	private int cols;
+	private ImageIcon player1;
+	private ImageIcon player2;
 	private Tile[][] tiles;
 
 	public GameBoard() {
 		rows = 3;
 		cols = 3;
 		tiles = new Tile[rows][cols];
+		
+		player1 = new ImageIcon("tomermain");
+		player2 = new ImageIcon("tomerscarf");
+
 
 		setLayout(new GridLayout(rows, cols));
 		setPreferredSize(new Dimension(400,400));
@@ -52,7 +58,14 @@ public class GameBoard extends JPanel {
 		}
 
 	}
+	
+	public void setPlayer1Icon(ImageIcon img){
+		player1 = img;
+	}
 
+	public void setPlayer2Icon(ImageIcon img){
+		player2 =img;
+	}
 	private class ButtonListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent ae) {
