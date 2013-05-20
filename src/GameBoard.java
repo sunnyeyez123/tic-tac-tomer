@@ -12,10 +12,14 @@ import javax.swing.JPanel;
  * 
  * */
 @SuppressWarnings("serial")
-public class GameBoard extends JPanel {
+public class GameBoard {
+	
+	private int rows;
+	private int cols;
 
 	public GameBoard() {
-
+rows = 3;
+cols = 3;
 	}
 
 	@SuppressWarnings("unused")
