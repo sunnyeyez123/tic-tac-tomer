@@ -12,9 +12,9 @@ import javax.swing.JPanel;
  * 
  * */
 @SuppressWarnings("serial")
-public class GamePanel extends JPanel {
+public class GameBoard extends JPanel {
 
-	public GamePanel() {
+	public GameBoard() {
 
 	}
 
