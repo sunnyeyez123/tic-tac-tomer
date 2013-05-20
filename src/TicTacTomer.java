@@ -16,10 +16,11 @@ public class TicTacTomer {
 		}
 		// end ugly hack
 		// TODO Auto-generated method stub
+		
+		GamePanel panel = new GamePanel();
 		JFrame frame = new JFrame("Tic-Tac-Tomer!");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		GameBoard panel = new GameBoard();
 		frame.add(panel);
 		frame.pack();
 		frame.setVisible(true);

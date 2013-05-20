@@ -20,7 +20,6 @@ public class GameBoard extends JPanel {
 	private int cols;
 	private Tile[][] tiles;
 
-
 	public GameBoard() {
 		rows = 3;
 		cols = 3;
@@ -43,10 +42,23 @@ public class GameBoard extends JPanel {
 
 		
 	}
+	
+	public void reset(){
+		for(int i =0; i < rows; i++){
+			for(int j =0; j < cols; j++){
+				tiles[i][j].setIcon(null);	
+				
+			}
+		}
+
+	}
 
 	private class ButtonListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent ae) {
+			
+			
+			/*do all the tic tac toe rule magic*/
 		}
 	}
 
