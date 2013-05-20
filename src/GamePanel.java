@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -24,6 +25,8 @@ public class GamePanel extends JPanel {
 	JComboBox tomerList;
 	String[] tomerStrings = { "tomercoding", "tomercrossarmed",
 			"tomerfunnyface", "tomermain", "tomerscarf" };
+	ButtonGroup group = new ButtonGroup();
+
 
 	public GamePanel() {
 		setLayout(new BorderLayout());
@@ -39,6 +42,9 @@ public class GamePanel extends JPanel {
 		imgP2 = new JRadioButton("Change Player 2 Image");
 		imgP2.addActionListener(bListen);
 
+		group.add(imgP1);
+		group.add(imgP2);
+		group.clearSelection();
 		// Create the combo box, select item at index 4.
 		// Indices start at 0, so 4 specifies the pig.
 		tomerList = new JComboBox(tomerStrings);
@@ -68,7 +74,7 @@ public class GamePanel extends JPanel {
 				String tomerPicName = (String) cb.getSelectedItem();
 
 				if (imgP1.isSelected()) {
-					p1icon = new ImageIcon(tomerPicName);
+					p1icon = new ImageIcon(tomerPicName+".jpg");
 					board.setPlayer1Icon(p1icon);
 
 				}

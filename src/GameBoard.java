@@ -18,17 +18,20 @@ public class GameBoard extends JPanel {
 
 	private int rows;
 	private int cols;
+	private int turn;
 	private ImageIcon player1;
 	private ImageIcon player2;
 	private Tile[][] tiles;
+	
 
 	public GameBoard() {
+		turn = 1;
 		rows = 3;
 		cols = 3;
 		tiles = new Tile[rows][cols];
 		
-		player1 = new ImageIcon("tomermain");
-		player2 = new ImageIcon("tomerscarf");
+		player1 = new ImageIcon("tomermain.jpg");
+		player2 = new ImageIcon("tomerscarf.jpg");
 
 
 		setLayout(new GridLayout(rows, cols));
@@ -50,9 +53,12 @@ public class GameBoard extends JPanel {
 	}
 	
 	public void reset(){
+		turn = 1;
 		for(int i =0; i < rows; i++){
 			for(int j =0; j < cols; j++){
-				tiles[i][j].setIcon(null);	
+				tiles[i][j].setImage(null);
+				
+
 				
 			}
 		}
@@ -70,7 +76,18 @@ public class GameBoard extends JPanel {
 
 		public void actionPerformed(ActionEvent ae) {
 			
+			Tile button = ( Tile )ae.getSource();
 			
+			if(turn == 1){
+				button.setImage(player1);
+			//	button.setBackground(Color.red);
+				turn =2;
+			}else{
+				button.setImage(player2);
+			//	button.setBackground(Color.blue);
+				turn =1;
+			}
+
 			/*do all the tic tac toe rule magic*/
 		}
 	}
