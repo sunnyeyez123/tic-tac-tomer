@@ -5,17 +5,25 @@ import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 public class GamePanel extends JPanel {
 
 	GameBoard board;
-	JButton reset, imgP1, imgP2;
+	JButton reset;
+	
+	JRadioButton imgP1;
+	JRadioButton imgP2;
+
 	ImageIcon p1icon;
 	ImageIcon p2icon;
-	private JFileChooser chooser;
+	JComboBox tomerList;
+	String[] tomerStrings = { "tomercoding", "tomercrossarmed", "tomerfunnyface", "tomermain", "tomerscarf" };
+
 
 	public GamePanel() {
 		setLayout(new BorderLayout());
@@ -26,17 +34,22 @@ public class GamePanel extends JPanel {
 		board = new GameBoard();
 		reset = new JButton("RESET");
 		reset.addActionListener(bListen);
-		imgP1 = new JButton("Change Player 1 Image");
+		imgP1 = new JRadioButton("Change Player 1 Image");
 		imgP1.addActionListener(bListen);
-		imgP2 = new JButton("Change Player 2 Image");
+		imgP2 = new JRadioButton("Change Player 2 Image");
 		imgP2.addActionListener(bListen);
 
-		chooser = new JFileChooser();
+		//Create the combo box, select item at index 4.
+		//Indices start at 0, so 4 specifies the pig.
+		tomerList = new JComboBox(tomerStrings);
+		tomerList.setSelectedIndex(3);
+		tomerList.addActionListener(bListen);
 
 		panel.add(imgP1, BorderLayout.EAST);
 		panel.add(imgP2, BorderLayout.WEST);
 
 		panel.add(reset, BorderLayout.NORTH);
+		panel.add(tomerList, BorderLayout.SOUTH);
 		add(panel, BorderLayout.SOUTH);
 		add(board, BorderLayout.NORTH);
 	}
@@ -49,30 +62,27 @@ public class GamePanel extends JPanel {
 				board.reset();
 			}
 
-			if (ae.getSource() == imgP1) {
-				int returnVal = chooser.showOpenDialog(null);
+			if (ae.getSource() == tomerList) {
+				
+				  JComboBox cb = (JComboBox)ae.getSource();
+			        String tomerPicName = (String)cb.getSelectedItem();
+			        
+			        if(imgP1.isSelected()){
+				        p1icon = new ImageIcon(tomerPicName);
 
-				if (returnVal == JFileChooser.APPROVE_OPTION) {
-					File file = chooser.getSelectedFile();
-					String name = file.getAbsolutePath();
-					p1icon = new ImageIcon(name);
-				} else {
-					JOptionPane.showMessageDialog(null, "Invalid file type.");
-				}
+			        }
+			        if(imgP2.isSelected()){
+				        p2icon = new ImageIcon(tomerPicName);
+
+			        }
+			        
+			       
+			        
+		        
+		
 			}
 
-			if (ae.getSource() == imgP2) {
-				int returnVal = chooser.showOpenDialog(null);
-
-				if (returnVal == JFileChooser.APPROVE_OPTION) {
-					File file = chooser.getSelectedFile();
-					String name = file.getAbsolutePath();
-					p2icon = new ImageIcon(name);
-				} else {
-					JOptionPane.showMessageDialog(null, "Invalid file type.");
-				}
-			}
-
+			
 		}
 	}
 
