@@ -12,6 +12,7 @@ public class Tile extends JButton {
 	private ImageIcon icon;
 	private int xLoc;
 	private int yLoc;
+	private int player;
 
 	public Tile() {
 		setBackground(Color.WHITE);
@@ -21,6 +22,15 @@ public class Tile extends JButton {
 	public void setImage(ImageIcon img) {
 		icon = img;
 		this.setIcon(icon);
+	}
+	
+	
+	public void setPlayer(int id){
+		player = id;
+	}
+	
+	public int getPlayer(){
+		return player;
 	}
 
 	public int getXLoc() {
