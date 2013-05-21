@@ -83,40 +83,49 @@ public class GameBoard extends JPanel {
 
 	public void checkTicTacToe() {
 		// check horizontal
+		int winner = 0;
 
 
 		Tile one = tiles[0][0];
 		Tile two = tiles[0][1];
 		Tile three = tiles[0][2];
 		if (samePlayer(one, two, three)) {
+			winner = one.getPlayer();
 
+			if(winner !=0){
 			JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
 					+ " wins!");
 			this.reset();
+			}
 		}
 		
-	/*	 one = tiles[1][0];
+		 one = tiles[1][0];
 		 two = tiles[1][1];
 		 three = tiles[1][2];
-		 if (samePlayer(one, two, three)) {
+		if (samePlayer(one, two, three)) {
+			winner = one.getPlayer();
 
-				JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
-						+ " wins!");
-				this.reset();
+			if(winner !=0){
+			JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
+					+ " wins!");
+			this.reset();
 			}
-		
+		}
 		
 		 one = tiles[2][0];
 		 two = tiles[2][1];
 		 three = tiles[2][2];
 		 
 		 if (samePlayer(one, two, three)) {
+			winner = one.getPlayer();
 
-				JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
-						+ " wins!");
-				this.reset();
+			if(winner !=0){
+			JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
+					+ " wins!");
+			this.reset();
 			}
-*/
+		}
+		 
 	}
 
 	private class ButtonListener implements ActionListener {
