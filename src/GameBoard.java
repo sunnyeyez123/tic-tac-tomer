@@ -166,6 +166,35 @@ public class GameBoard extends JPanel {
 				this.reset();
 				}
 			}
+			 
+			 
+				// check diags
+
+			 one = tiles[0][0];
+			 two = tiles[1][1];
+			 three = tiles[2][2];
+			if (samePlayer(one, two, three)) {
+				winner = one.getPlayer();
+
+				if(winner !=0){
+				JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
+						+ " wins!");
+				this.reset();
+				}
+			}
+			
+			 one = tiles[0][2];
+			 two = tiles[1][1];
+			 three = tiles[2][0];
+			if (samePlayer(one, two, three)) {
+				winner = one.getPlayer();
+
+				if(winner !=0){
+				JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
+						+ " wins!");
+				this.reset();
+				}
+			}
 		 
 	}
 
