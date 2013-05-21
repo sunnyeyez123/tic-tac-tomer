@@ -3,14 +3,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /*
  * @author Jasmine Lawrence 
  * 
- * 
- * 
+ * BNR HackNight 5/20/13
  * 
  * 
  * */
@@ -23,6 +23,8 @@ public class GameBoard extends JPanel {
 	private ImageIcon player1;
 	private ImageIcon player2;
 	private Tile[][] tiles;
+	JLabel whosTurn;
+
 
 	public GameBoard() {
 		turn = 1;
@@ -32,11 +34,13 @@ public class GameBoard extends JPanel {
 
 		player1 = new ImageIcon("tomermain.jpg");
 		player2 = new ImageIcon("tomerscarf.jpg");
+	
+
 
 		setLayout(new GridLayout(rows, cols));
 		setPreferredSize(new Dimension(400, 400));
 		ButtonListener bListen = new ButtonListener();
-
+		
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				tiles[i][j] = new Tile();
@@ -46,6 +50,9 @@ public class GameBoard extends JPanel {
 				add(tiles[i][j]);
 			}
 		}
+		
+		
+
 
 	}
 
@@ -56,6 +63,20 @@ public class GameBoard extends JPanel {
 				tiles[i][j].setImage(null);
 				tiles[i][j].setPlayer(0);
 
+			}
+		}
+		
+
+	}
+
+	public void updateTiles(int player, ImageIcon icon) {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+
+				if (tiles[i][j].getPlayer() == player) {
+					tiles[i][j].setImage(icon);
+
+				}
 
 			}
 		}
@@ -91,111 +112,110 @@ public class GameBoard extends JPanel {
 		if (samePlayer(one, two, three)) {
 			winner = one.getPlayer();
 
-			if(winner !=0){
-			JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
-					+ " wins!");
-			this.reset();
+			if (winner != 0) {
+				JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
+						+ " wins!");
+				this.reset();
 			}
 		}
-		
-		 one = tiles[1][0];
-		 two = tiles[1][1];
-		 three = tiles[1][2];
+
+		one = tiles[1][0];
+		two = tiles[1][1];
+		three = tiles[1][2];
 		if (samePlayer(one, two, three)) {
 			winner = one.getPlayer();
 
-			if(winner !=0){
-			JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
-					+ " wins!");
-			this.reset();
+			if (winner != 0) {
+				JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
+						+ " wins!");
+				this.reset();
 			}
 		}
-		
-		 one = tiles[2][0];
-		 two = tiles[2][1];
-		 three = tiles[2][2];
-		 
-		 if (samePlayer(one, two, three)) {
+
+		one = tiles[2][0];
+		two = tiles[2][1];
+		three = tiles[2][2];
+
+		if (samePlayer(one, two, three)) {
 			winner = one.getPlayer();
 
-			if(winner !=0){
-			JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
-					+ " wins!");
-			this.reset();
+			if (winner != 0) {
+				JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
+						+ " wins!");
+				this.reset();
 			}
 		}
-		 
+
 		// check vertical
 
-			 one = tiles[0][0];
-			 two = tiles[1][0];
-			 three = tiles[2][0];
-			if (samePlayer(one, two, three)) {
-				winner = one.getPlayer();
+		one = tiles[0][0];
+		two = tiles[1][0];
+		three = tiles[2][0];
+		if (samePlayer(one, two, three)) {
+			winner = one.getPlayer();
 
-				if(winner !=0){
+			if (winner != 0) {
 				JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
 						+ " wins!");
 				this.reset();
-				}
 			}
-			
-			 one = tiles[0][1];
-			 two = tiles[1][1];
-			 three = tiles[2][1];
-			if (samePlayer(one, two, three)) {
-				winner = one.getPlayer();
+		}
 
-				if(winner !=0){
+		one = tiles[0][1];
+		two = tiles[1][1];
+		three = tiles[2][1];
+		if (samePlayer(one, two, three)) {
+			winner = one.getPlayer();
+
+			if (winner != 0) {
 				JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
 						+ " wins!");
 				this.reset();
-				}
 			}
-			
-			 one = tiles[0][2];
-			 two = tiles[1][2];
-			 three = tiles[2][2];
-			 
-			 if (samePlayer(one, two, three)) {
-				winner = one.getPlayer();
+		}
 
-				if(winner !=0){
+		one = tiles[0][2];
+		two = tiles[1][2];
+		three = tiles[2][2];
+
+		if (samePlayer(one, two, three)) {
+			winner = one.getPlayer();
+
+			if (winner != 0) {
 				JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
 						+ " wins!");
 				this.reset();
-				}
 			}
-			 
-			 
-				// check diags
+		}
 
-			 one = tiles[0][0];
-			 two = tiles[1][1];
-			 three = tiles[2][2];
-			if (samePlayer(one, two, three)) {
-				winner = one.getPlayer();
+		// check diags
 
-				if(winner !=0){
+		one = tiles[0][0];
+		two = tiles[1][1];
+		three = tiles[2][2];
+		if (samePlayer(one, two, three)) {
+			winner = one.getPlayer();
+
+			if (winner != 0) {
 				JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
 						+ " wins!");
 				this.reset();
-				}
 			}
-			
-			 one = tiles[0][2];
-			 two = tiles[1][1];
-			 three = tiles[2][0];
-			if (samePlayer(one, two, three)) {
-				winner = one.getPlayer();
+		}
 
-				if(winner !=0){
+		one = tiles[0][2];
+		two = tiles[1][1];
+		three = tiles[2][0];
+		if (samePlayer(one, two, three)) {
+			winner = one.getPlayer();
+
+			if (winner != 0) {
 				JOptionPane.showMessageDialog(this, "Player " + one.getPlayer()
 						+ " wins!");
 				this.reset();
-				}
 			}
-		 
+		}
+
 	}
 
 	private class ButtonListener implements ActionListener {
@@ -209,11 +229,13 @@ public class GameBoard extends JPanel {
 				button.setPlayer(1);
 				// button.setBackground(Color.red);
 				turn = 2;
+
 			} else {
 				button.setImage(player2);
 				button.setPlayer(2);
 				// button.setBackground(Color.blue);
 				turn = 1;
+
 			}
 
 			/* do all the tic tac toe rule magic */

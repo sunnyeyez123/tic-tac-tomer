@@ -1,22 +1,19 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+@SuppressWarnings("serial")
 public class GamePanel extends JPanel {
 
 	GameBoard board;
 	JButton reset;
-
 	JRadioButton imgP1;
 	JRadioButton imgP2;
 
@@ -35,6 +32,9 @@ public class GamePanel extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 		board = new GameBoard();
+		
+		
+
 		reset = new JButton("RESET");
 		reset.addActionListener(bListen);
 		imgP1 = new JRadioButton("Change Player 1 Image");
@@ -76,11 +76,14 @@ public class GamePanel extends JPanel {
 				if (imgP1.isSelected()) {
 					p1icon = new ImageIcon(tomerPicName+".jpg");
 					board.setPlayer1Icon(p1icon);
+					board.updateTiles(1, p1icon);
 
 				}
 				if (imgP2.isSelected()) {
-					p2icon = new ImageIcon(tomerPicName);
+					p2icon = new ImageIcon(tomerPicName+ ".jpg");
 					board.setPlayer2Icon(p2icon);
+					board.updateTiles(2, p2icon);
+
 
 				}
 
